@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=5">
+
+    <title>GUSERA Maps</title>
+
+    <meta name="description"
+          content="GUSERA Maps - Offline PDF & GeoPDF Mapping Application">
+
+    <meta name="theme-color" content="#0B5ED7">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Icon -->
+    <link rel="icon" href="assets/logo/logo.png">
+    <link rel="apple-touch-icon" href="assets/icons/icon-192.png">
+
+    <!-- ===========================
+         CSS
+    ============================ -->
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/sidebar.css">
+    <link rel="stylesheet" href="css/toolbar.css">
+    <link rel="stylesheet" href="css/mobile.css">
+    <link rel="stylesheet" href="css/splash.css">
+    <link rel="stylesheet" href="css/dialog.css">
+    <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/map.css">
+    <link rel="stylesheet" href="css/theme.css">
+
+    <!-- Leaflet -->
+    <link rel="stylesheet"
+          href="libs/leaflet/leaflet.css">
+
+    <!-- PDF.js Viewer -->
+    <link rel="stylesheet"
+          href="libs/pdfjs/viewer.css">
+
+</head>
+
+<body class="light-theme">
+
+<!-- =======================================================
+     SPLASH SCREEN
+======================================================= -->
+
+<div id="splash-screen">
+
+    <div class="splash-content">
+
+        <img
+            src="assets/logo/logo.png"
+            alt="GUSERA Maps"
+            class="splash-logo">
+
+        <h1 class="splash-title">
+            GUSERA Maps
+        </h1>
+
+        <p class="splash-version">
+            Version 1.0
+        </p>
+
+        <div class="loading-area">
+
+            <div class="loading-bar">
+
+                <div id="loading-progress"></div>
+
+            </div>
+
+            <span id="loading-text">
+                Memulai aplikasi...
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =======================================================
+     APP CONTAINER
+======================================================= -->
+
+<div id="app">
+
+    <!-- Overlay Sidebar -->
+
+    <div id="overlay"></div>
+
+    <!-- Seluruh isi aplikasi akan dimulai
+         pada Bagian 2 -->
+<!-- =======================================================
+     HEADER / APP BAR
+======================================================= -->
+
+<header id="app-header">
+
+    <div class="header-left">
+
+        <button id="menuButton"
+                class="icon-button"
+                title="Menu">
+
+            ☰
+
+        </button>
+
+        <img
+            src="assets/logo/logo.png"
+            alt="Logo"
+            class="header-logo">
+
+        <div class="header-title">
+
+            <h1>GUSERA Maps</h1>
+            <span>Offline PDF & GeoPDF Viewer</span>
+
+        </div>
+
+    </div>
+
+    <div class="header-right">
+
+        <button id="btnTheme"
+                class="icon-button"
+                title="Dark Mode">
+
+            🌙
+
+        </button>
+
+        <button id="btnFullscreen"
+                class="icon-button"
+                title="Fullscreen">
+
+            ⛶
+
+        </button>
+
+        <button id="btnSettings"
+                class="icon-button"
+                title="Settings">
+
+            ⚙
+
+        </button>
+
+    </div>
+
+</header>
+
+<!-- =======================================================
+     SIDEBAR
+======================================================= -->
+
+<aside id="sidebar">
+
+    <div class="sidebar-header">
+
+        <img
+            src="assets/logo/logo.png"
+            class="sidebar-logo"
+            alt="Logo">
+
+        <h2>GUSERA Maps</h2>
+
+        <span>Version 1.0</span>
+
+    </div>
+
+    <nav class="sidebar-menu">
+
+        <button id="navHome">
+            🏠 Dashboard
+        </button>
+
+        <button id="navOpenPDF">
+            📂 Open PDF
+        </button>
+
+        <button id="navProjects">
+            📁 Project
+        </button>
+
+        <button id="navWaypoint">
+            📍 Waypoint
+        </button>
+
+        <button id="navTrack">
+            🛣 Track Recorder
+        </button>
+
+        <button id="navMeasure">
+            📏 Measure
+        </button>
+
+        <button id="navImport">
+            📥 Import
+        </button>
+
+        <button id="navExport">
+            📤 Export
+        </button>
+
+        <button id="navSettings">
+            ⚙ Settings
+        </button>
+
+        <button id="navAbout">
+            ℹ About
+        </button>
+
+    </nav>
+
+</aside>
+
+<!-- =======================================================
+     TOOLBAR
+======================================================= -->
+
+<section id="toolbar">
+
+    <button id="btnOpenPDF">
+        📂
+        <span>Open</span>
+    </button>
+
+    <button id="btnGPS">
+        📡
+        <span>GPS</span>
+    </button>
+
+    <button id="btnWaypoint">
+        📍
+        <span>Waypoint</span>
+    </button>
+
+    <button id="btnMeasure">
+        📏
+        <span>Measure</span>
+    </button>
+
+    <button id="btnTrack">
+        🛣
+        <span>Track</span>
+    </button>
+
+    <button id="btnExport">
+        📤
+        <span>Export</span>
+    </button>
+
+</section>
+
+<!-- =======================================================
+     GPS STATUS PANEL
+======================================================= -->
+
+<section id="gps-panel">
+
+    <div class="panel-title">
+
+        <h2>GPS Status</h2>
+
+        <span id="gpsIndicator"
+              class="status offline">
+
+            Offline
+
+        </span>
+
+    </div>
+
+    <div class="gps-grid">
+
+        <div class="gps-item">
+            <label>Latitude</label>
+            <span id="latitude">-</span>
+        </div>
+
+        <div class="gps-item">
+            <label>Longitude</label>
+            <span id="longitude">-</span>
+        </div>
+
+        <div class="gps-item">
+            <label>Accuracy</label>
+            <span id="accuracy">-</span>
+        </div>
+
+        <div class="gps-item">
+            <label>Altitude</label>
+            <span id="altitude">-</span>
+        </div>
+
+        <div class="gps-item">
+            <label>Speed</label>
+            <span id="speed">-</span>
+        </div>
+
+        <div class="gps-item">
+            <label>Bearing</label>
+            <span id="bearing">-</span>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =======================================================
+     STORAGE INFORMATION
+======================================================= -->
+
+<section id="storage-panel">
+
+    <h2>Storage</h2>
+
+    <div class="storage-grid">
+
+        <div class="storage-card">
+
+            <h3>PDF Maps</h3>
+
+            <span id="pdfCount">
+
+                0
+
+            </span>
+
+        </div>
+
+        <div class="storage-card">
+
+            <h3>Waypoints</h3>
+
+            <span id="waypointCount">
+
+                0
+
+            </span>
+
+        </div>
+
+        <div class="storage-card">
+
+            <h3>Tracks</h3>
+
+            <span id="trackCount">
+
+                0
+
+            </span>
+
+        </div>
+
+        <div class="storage-card">
+
+            <h3>Project</h3>
+
+            <span id="projectName">
+
+                Default
+
+            </span>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =======================================================
+     MAIN CONTENT
+======================================================= -->
+
+<main id="main-content">
+
+<!-- =======================================================
+     PDF VIEWER AREA
+======================================================= -->
+
+<section id="viewer-container">
+
+    <!-- Thumbnail Panel -->
+
+    <aside id="thumbnail-panel">
+
+        <div class="panel-header">
+
+            <h3>Pages</h3>
+
+        </div>
+
+        <div id="thumbnail-list">
+
+            <!-- Thumbnail PDF akan dibuat otomatis -->
+
+        </div>
+
+    </aside>
+
+    <!-- Viewer -->
+
+    <section id="pdf-viewer">
+
+        <div id="viewer-placeholder">
+
+            <img
+                src="assets/logo/logo.png"
+                alt="Logo"
+                class="placeholder-logo">
+
+            <h2>Belum ada PDF dibuka</h2>
+
+            <p>
+
+                Klik tombol
+                <strong>Open PDF</strong>
+                untuk membuka peta.
+
+            </p>
+
+        </div>
+
+        <!-- Canvas PDF.js -->
+
+        <div id="pdfCanvasContainer">
+
+            <canvas id="pdfCanvas"></canvas>
+
+        </div>
+
+    </section>
+
+</section>
+
+<!-- =======================================================
+     PDF TOOLBAR
+======================================================= -->
+
+<section id="pdf-toolbar">
+
+    <button id="btnPrevPage">
+
+        ◀
+
+    </button>
+
+    <span>
+
+        Halaman
+
+        <strong id="currentPage">
+
+            1
+
+        </strong>
+
+        /
+
+        <strong id="totalPages">
+
+            0
+
+        </strong>
+
+    </span>
+
+    <button id="btnNextPage">
+
+        ▶
+
+    </button>
+
+    <div class="toolbar-divider"></div>
+
+    <button id="btnZoomOut">
+
+        ➖
+
+    </button>
+
+    <span id="zoomLevel">
+
+        100%
+
+    </span>
+
+    <button id="btnZoomIn">
+
+        ➕
+
+    </button>
+
+    <div class="toolbar-divider"></div>
+
+    <button id="btnRotateLeft">
+
+        ⟲
+
+    </button>
+
+    <button id="btnRotateRight">
+
+        ⟳
+
+    </button>
+
+    <button id="btnFitWidth">
+
+        Fit Width
+
+    </button>
+
+    <button id="btnFitPage">
+
+        Fit Page
+
+    </button>
+
+</section>
+
+<!-- =======================================================
+     FLOATING ACTION BUTTON
+======================================================= -->
+
+<div id="fab-container">
+
+    <button id="fabMain">
+
+        ＋
+
+    </button>
+
+    <div id="fabMenu">
+
+        <button id="fabWaypoint">
+
+            📍 Waypoint
+
+        </button>
+
+        <button id="fabTrack">
+
+            🛣 Track
+
+        </button>
+
+        <button id="fabMeasure">
+
+            📏 Measure
+
+        </button>
+
+        <button id="fabImport">
+
+            📥 Import
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- =======================================================
+     TRACK RECORDER PANEL
+======================================================= -->
+
+<section id="track-panel">
+
+    <h2>
+
+        Track Recorder
+
+    </h2>
+
+    <div class="track-grid">
+
+        <div>
+
+            <label>Status</label>
+
+            <span id="trackStatus">
+
+                Stop
+
+            </span>
+
+        </div>
+
+        <div>
+
+            <label>Distance</label>
+
+            <span id="trackDistance">
+
+                0 m
+
+            </span>
+
+        </div>
+
+        <div>
+
+            <label>Duration</label>
+
+            <span id="trackTime">
+
+                00:00:00
+
+            </span>
+
+        </div>
+
+        <div>
+
+            <label>Average Speed</label>
+
+            <span id="trackAverage">
+
+                0 km/h
+
+            </span>
+
+        </div>
+
+    </div>
+
+    <div class="track-buttons">
+
+        <button id="btnTrackStart">
+
+            🟢 START
+
+        </button>
+
+        <button id="btnTrackPause">
+
+            ⏸ PAUSE
+
+        </button>
+
+        <button id="btnTrackStop">
+
+            🔴 STOP
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- =======================================================
+     MEASURE PANEL
+======================================================= -->
+
+<section id="measure-panel">
+
+    <h2>
+
+        Measure Tool
+
+    </h2>
+
+    <div class="measure-buttons">
+
+        <button id="measureDistance">
+
+            Distance
+
+        </button>
+
+        <button id="measureArea">
+
+            Area
+
+        </button>
+
+        <button id="measureBearing">
+
+            Bearing
+
+        </button>
+
+        <button id="measureAzimuth">
+
+            Azimuth
+
+        </button>
+
+        <button id="measureClear">
+
+            Clear
+
+        </button>
+
+    </div>
+
+    <div class="measure-result">
+
+        <label>
+
+            Result
+
+        </label>
+
+        <span id="measureResult">
+
+            -
+
+        </span>
+
+    </div>
+
+</section>
+
+<!-- =======================================================
+     DIALOG : OPEN PDF
+======================================================= -->
+
+<div id="dialogOpenPDF" class="dialog hidden">
+
+    <div class="dialog-content">
+
+        <div class="dialog-header">
+
+            <h2>Open PDF</h2>
+
+            <button class="dialog-close" data-dialog="dialogOpenPDF">
+
+                ✕
+
+            </button>
+
+        </div>
+
+        <div class="dialog-body">
+
+            <input
+                type="file"
+                id="pdfFileInput"
+                accept=".pdf">
+
+            <hr>
+
+            <h3>PDF Tersedia</h3>
+
+            <div id="pdfList">
+
+                <!-- Daftar PDF akan dibuat otomatis -->
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =======================================================
+     DIALOG : WAYPOINT
+======================================================= -->
+
+<div id="dialogWaypoint" class="dialog hidden">
+
+    <div class="dialog-content">
+
+        <div class="dialog-header">
+
+            <h2>Waypoint</h2>
+
+            <button class="dialog-close" data-dialog="dialogWaypoint">
+
+                ✕
+
+            </button>
+
+        </div>
+
+        <div class="dialog-body">
+
+            <label>Nama</label>
+
+            <input
+                type="text"
+                id="wpName"
+                placeholder="Nama waypoint">
+
+            <label>Kategori</label>
+
+            <select id="wpCategory">
+
+                <option>Survey</option>
+                <option>Patok</option>
+                <option>Jalan</option>
+                <option>Sungai</option>
+                <option>Lainnya</option>
+
+            </select>
+
+            <label>Catatan</label>
+
+            <textarea
+                id="wpNote"
+                rows="4"></textarea>
+
+            <button id="btnSaveWaypoint">
+
+                Simpan Waypoint
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =======================================================
+     DIALOG : SETTINGS
+======================================================= -->
+
+<div id="dialogSettings" class="dialog hidden">
+
+    <div class="dialog-content">
+
+        <div class="dialog-header">
+
+            <h2>Settings</h2>
+
+            <button class="dialog-close" data-dialog="dialogSettings">
+
+                ✕
+
+            </button>
+
+        </div>
+
+        <div class="dialog-body">
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    id="darkMode">
+
+                Dark Mode
+
+            </label>
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    id="followGPS">
+
+                Follow GPS
+
+            </label>
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    id="autoCenter">
+
+                Auto Center
+
+            </label>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- =======================================================
+     IMPORT / EXPORT
+======================================================= -->
+
+<input
+    type="file"
+    id="importGeoJSON"
+    accept=".geojson,.json"
+    hidden>
+
+<input
+    type="file"
+    id="importGPX"
+    accept=".gpx"
+    hidden>
+
+<input
+    type="file"
+    id="importCSV"
+    accept=".csv"
+    hidden>
+
+<!-- =======================================================
+     JAVASCRIPT LIBRARY
+======================================================= -->
+
+<script src="libs/pdfjs/pdf.min.js"></script>
+<script src="libs/leaflet/leaflet.js"></script>
+<script src="libs/turf/turf.min.js"></script>
+<script src="libs/idb/idb.min.js"></script>
+
+<!-- =======================================================
+     APPLICATION
+======================================================= -->
+
+<script src="js/utils.js"></script>
+<script src="js/database.js"></script>
+<script src="js/storage.js"></script>
+<script src="js/init.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/pdf.js"></script>
+<script src="js/geopdf.js"></script>
+<script src="js/gps.js"></script>
+<script src="js/compass.js"></script>
+<script src="js/waypoint.js"></script>
+<script src="js/track.js"></script>
+<script src="js/measure.js"></script>
+<script src="js/import.js"></script>
+<script src="js/export.js"></script>
+<script src="js/project.js"></script>
+<script src="js/settings.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/cache.js"></script>
+<script src="js/notification.js"></script>
+<script src="js/version.js"></script>
+<script src="js/app.js"></script>
+
+<!-- =======================================================
+     SERVICE WORKER
+======================================================= -->
+
+<script>
+
+if ('serviceWorker' in navigator) {
+
+    window.addEventListener('load', () => {
+
+        navigator.serviceWorker
+            .register('service-worker.js')
+            .then(() => {
+
+                console.log('Service Worker Registered');
+
+            })
+            .catch(error => {
+
+                console.error(error);
+
+            });
+
+    });
+
+}
+
+</script>
+
+</main>
+
+</div>
+
+</body>
+
+</html>
