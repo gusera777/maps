@@ -1,0 +1,1143 @@
+/* ==========================================================
+   TOOLBAR
+========================================================== */
+
+#toolbar{
+
+    height:var(--toolbar-height);
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:10px 16px;
+
+    background:var(--card);
+
+    border-bottom:1px solid var(--border);
+
+    overflow-x:auto;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.05);
+
+}
+
+#toolbar::-webkit-scrollbar{
+
+    height:6px;
+
+}
+
+#toolbar button{
+
+    min-width:90px;
+
+    height:46px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:2px;
+
+    background:#fff;
+
+    border:1px solid var(--border);
+
+    border-radius:12px;
+
+    transition:var(--transition);
+
+    color:var(--text);
+
+    font-size:18px;
+
+    flex-shrink:0;
+
+}
+
+body.dark-theme #toolbar button{
+
+    background:#262626;
+
+}
+
+#toolbar button span{
+
+    font-size:.72rem;
+
+    font-weight:600;
+
+}
+
+#toolbar button:hover{
+
+    background:var(--primary);
+
+    color:#fff;
+
+    transform:translateY(-2px);
+
+}
+
+#toolbar button:active{
+
+    transform:scale(.96);
+
+}
+
+/*==========================================================
+    GUSERA Maps
+    toolbar.css
+==========================================================*/
+
+/*==========================================================
+    APP HEADER
+==========================================================*/
+
+#app-header{
+
+    position:relative;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    height:64px;
+
+    padding:0 18px;
+
+    background:var(--primary);
+
+    color:#FFFFFF;
+
+    box-shadow:
+
+        0 4px 18px rgba(0,0,0,.12);
+
+    z-index:1000;
+
+}
+
+/*==========================================================
+    HEADER LEFT
+==========================================================*/
+
+.header-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+/*==========================================================
+    MENU BUTTON
+==========================================================*/
+
+#menuButton{
+
+    width:44px;
+
+    height:44px;
+
+    border-radius:12px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#FFFFFF;
+
+    font-size:22px;
+
+    transition:all .25s ease;
+
+}
+
+#menuButton:hover{
+
+    background:rgba(255,255,255,.15);
+
+}
+
+/*==========================================================
+    TITLE
+==========================================================*/
+
+.header-title{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.header-title h1{
+
+    font-size:20px;
+
+    font-weight:700;
+
+    color:#FFFFFF;
+
+}
+
+.header-title span{
+
+    font-size:12px;
+
+    opacity:.9;
+
+}
+
+/*==========================================================
+    HEADER RIGHT
+==========================================================*/
+
+.header-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+/*==========================================================
+    SEARCH
+==========================================================*/
+
+.header-search{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    width:280px;
+
+    height:42px;
+
+    padding:0 14px;
+
+    border-radius:25px;
+
+    background:rgba(255,255,255,.15);
+
+}
+
+.header-search input{
+
+    flex:1;
+
+    background:transparent;
+
+    border:none;
+
+    color:#FFFFFF;
+
+}
+
+.header-search input::placeholder{
+
+    color:rgba(255,255,255,.75);
+
+}
+
+/*==========================================================
+    ICON BUTTON
+==========================================================*/
+
+.toolbar-icon{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#FFFFFF;
+
+    transition:all .25s ease;
+
+}
+
+.toolbar-icon:hover{
+
+    background:rgba(255,255,255,.15);
+
+}
+
+/*==========================================================
+    PDF TOOLBAR
+==========================================================*/
+
+#pdf-toolbar{
+
+    height:60px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:0 15px;
+
+    background:var(--card);
+
+    border-bottom:1px solid var(--border);
+
+    overflow-x:auto;
+
+}
+
+/*==========================================================
+    TOOLBAR GROUP
+==========================================================*/
+
+.toolbar-group{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+/*==========================================================
+    TOOLBAR BUTTON
+==========================================================*/
+
+.toolbar-btn{
+
+    min-width:42px;
+
+    height:42px;
+
+    padding:0 12px;
+
+    border-radius:10px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:6px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    transition:all .25s ease;
+
+}
+
+.toolbar-btn:hover{
+
+    background:var(--primary);
+
+    color:#FFFFFF;
+
+}
+
+.toolbar-btn.active{
+
+    background:var(--primary);
+
+    color:#FFFFFF;
+
+}
+
+/*==========================================================
+    DIVIDER
+==========================================================*/
+
+.toolbar-divider{
+
+    width:1px;
+
+    height:28px;
+
+    background:var(--border);
+
+}
+
+/*==========================================================
+    PDF PAGE CONTROLS
+==========================================================*/
+
+.page-controls{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.page-number{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-width:90px;
+
+    height:40px;
+
+    padding:0 14px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:var(--card);
+
+    font-weight:600;
+
+    color:var(--text);
+
+}
+
+.page-number input{
+
+    width:42px;
+
+    text-align:center;
+
+    border:none;
+
+    background:transparent;
+
+    margin:0 4px;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+}
+
+/*==========================================================
+    ZOOM CONTROLS
+==========================================================*/
+
+.zoom-controls{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+}
+
+.zoom-value{
+
+    min-width:70px;
+
+    text-align:center;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+}
+
+.zoom-slider{
+
+    width:140px;
+
+    cursor:pointer;
+
+}
+
+/*==========================================================
+    GPS STATUS
+==========================================================*/
+
+.gps-status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:0 14px;
+
+    height:40px;
+
+    border-radius:20px;
+
+    background:rgba(25,135,84,.12);
+
+    border:1px solid rgba(25,135,84,.25);
+
+}
+
+.gps-dot{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#198754;
+
+    animation:gpsPulse 2s infinite;
+
+}
+
+.gps-status.offline{
+
+    background:rgba(220,53,69,.10);
+
+    border-color:rgba(220,53,69,.20);
+
+}
+
+.gps-status.offline .gps-dot{
+
+    background:#DC3545;
+
+    animation:none;
+
+}
+
+.gps-status.searching{
+
+    background:rgba(255,193,7,.15);
+
+    border-color:rgba(255,193,7,.30);
+
+}
+
+.gps-status.searching .gps-dot{
+
+    background:#FFC107;
+
+}
+
+/*==========================================================
+    GPS INFO
+==========================================================*/
+
+.gps-info{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:6px;
+
+    font-size:.85rem;
+
+    font-weight:600;
+
+}
+
+/*==========================================================
+    ACCURACY BADGE
+==========================================================*/
+
+.accuracy-badge{
+
+    padding:4px 10px;
+
+    border-radius:20px;
+
+    background:#198754;
+
+    color:#FFFFFF;
+
+    font-size:.75rem;
+
+    font-weight:700;
+
+}
+
+.accuracy-badge.medium{
+
+    background:#FFC107;
+
+    color:#111;
+
+}
+
+.accuracy-badge.low{
+
+    background:#DC3545;
+
+}
+
+/*==========================================================
+    COMPASS
+==========================================================*/
+
+.compass-indicator{
+
+    width:42px;
+
+    height:42px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    border:1px solid var(--border);
+
+    background:var(--card);
+
+    transition:transform .25s ease;
+
+}
+
+.compass-indicator img{
+
+    width:24px;
+
+    height:24px;
+
+}
+
+/*==========================================================
+    BREADCRUMB
+==========================================================*/
+
+.toolbar-breadcrumb{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:var(--gray500);
+
+    font-size:.85rem;
+
+}
+
+.toolbar-breadcrumb span.active{
+
+    color:var(--primary);
+
+    font-weight:700;
+
+}
+
+/*==========================================================
+    PROGRESS BAR
+==========================================================*/
+
+.toolbar-progress{
+
+    position:absolute;
+
+    left:0;
+
+    bottom:0;
+
+    width:100%;
+
+    height:3px;
+
+    background:rgba(255,255,255,.15);
+
+    overflow:hidden;
+
+}
+
+.toolbar-progress-bar{
+
+    width:0;
+
+    height:100%;
+
+    background:#00E676;
+
+    transition:width .25s linear;
+
+}
+
+/*==========================================================
+    LOADING STATE
+==========================================================*/
+
+.toolbar-loading{
+
+    opacity:.65;
+
+    pointer-events:none;
+
+}
+
+/*==========================================================
+    GPS PULSE ANIMATION
+==========================================================*/
+
+@keyframes gpsPulse{
+
+    0%{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+    70%{
+
+        transform:scale(1.6);
+
+        opacity:.35;
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+/*==========================================================
+    FLOATING ACTION BUTTON
+==========================================================*/
+
+#fab-container{
+
+    position:fixed;
+
+    right:24px;
+
+    bottom:24px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-end;
+
+    gap:12px;
+
+    z-index:1100;
+
+}
+
+/*==========================================================
+    MAIN FAB
+==========================================================*/
+
+#main-fab{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:var(--primary);
+
+    color:#FFFFFF;
+
+    font-size:28px;
+
+    box-shadow:
+        0 8px 24px rgba(11,94,215,.35);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease,
+        background .25s ease;
+
+}
+
+#main-fab:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:
+        0 12px 30px rgba(11,94,215,.45);
+
+}
+
+#main-fab.active{
+
+    transform:rotate(45deg);
+
+}
+
+/*==========================================================
+    SPEED DIAL
+==========================================================*/
+
+#fab-menu{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-end;
+
+    gap:10px;
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(10px);
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease,
+        visibility .25s;
+
+}
+
+#fab-menu.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0);
+
+}
+
+/*==========================================================
+    FAB ITEM
+==========================================================*/
+
+.fab-item{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.fab-label{
+
+    padding:8px 14px;
+
+    border-radius:20px;
+
+    background:var(--card);
+
+    color:var(--text);
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    font-size:.85rem;
+
+    font-weight:600;
+
+    white-space:nowrap;
+
+}
+
+.fab-button{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:var(--primary);
+
+    color:#FFFFFF;
+
+    font-size:20px;
+
+    box-shadow:
+        0 6px 16px rgba(0,0,0,.20);
+
+    transition:
+        transform .2s ease,
+        background .2s ease;
+
+}
+
+.fab-button:hover{
+
+    transform:scale(1.08);
+
+}
+
+/*==========================================================
+    QUICK ACTION BAR
+==========================================================*/
+
+.quick-actions{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.quick-actions .toolbar-btn{
+
+    min-width:44px;
+
+}
+
+/*==========================================================
+    DARK MODE
+==========================================================*/
+
+body.dark-theme #app-header{
+
+    background:#0F172A;
+
+}
+
+body.dark-theme .header-search{
+
+    background:rgba(255,255,255,.08);
+
+}
+
+body.dark-theme .header-search input{
+
+    color:#FFFFFF;
+
+}
+
+body.dark-theme #pdf-toolbar{
+
+    background:#1E1E1E;
+
+}
+
+body.dark-theme .toolbar-btn{
+
+    background:#2B2B2B;
+
+    border-color:#3A3A3A;
+
+}
+
+body.dark-theme .page-number{
+
+    background:#2B2B2B;
+
+}
+
+body.dark-theme .fab-label{
+
+    background:#2B2B2B;
+
+    border-color:#3A3A3A;
+
+}
+
+/*==========================================================
+    TABLET
+==========================================================*/
+
+@media (max-width:992px){
+
+    .header-search{
+
+        width:200px;
+
+    }
+
+    .toolbar-breadcrumb{
+
+        display:none;
+
+    }
+
+}
+
+/*==========================================================
+    MOBILE
+==========================================================*/
+
+@media (max-width:768px){
+
+    #app-header{
+
+        height:56px;
+
+        padding:0 12px;
+
+    }
+
+    .header-search{
+
+        display:none;
+
+    }
+
+    #pdf-toolbar{
+
+        height:56px;
+
+        padding:0 10px;
+
+        gap:6px;
+
+    }
+
+    .toolbar-btn{
+
+        min-width:40px;
+
+        height:40px;
+
+        padding:0 10px;
+
+    }
+
+    #fab-container{
+
+        right:16px;
+
+        bottom:16px;
+
+    }
+
+    #main-fab{
+
+        width:56px;
+
+        height:56px;
+
+        font-size:24px;
+
+    }
+
+}
+
+/*==========================================================
+    SMALL MOBILE
+==========================================================*/
+
+@media (max-width:480px){
+
+    .header-title span{
+
+        display:none;
+
+    }
+
+    .header-title h1{
+
+        font-size:1rem;
+
+    }
+
+    .fab-label{
+
+        display:none;
+
+    }
+
+}
+
+/*==========================================================
+    ACCESSIBILITY
+==========================================================*/
+
+.toolbar-btn:focus-visible,
+#main-fab:focus-visible,
+.fab-button:focus-visible{
+
+    outline:3px solid rgba(11,94,215,.35);
+
+    outline-offset:2px;
+
+}
+
+/*==========================================================
+    FAB ANIMATION
+==========================================================*/
+
+.fab-item{
+
+    animation:fabFade .25s ease;
+
+}
+
+@keyframes fabFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/*==========================================================
+    END OF FILE
+==========================================================*/

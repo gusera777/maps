@@ -1,0 +1,1331 @@
+/*==========================================================
+    GUSERA Maps
+    map.css
+==========================================================*/
+
+/*==========================================================
+    MAP LAYOUT
+==========================================================*/
+
+#map-container{
+
+    position:relative;
+
+    flex:1;
+
+    display:flex;
+
+    overflow:hidden;
+
+    background:#EEF2F7;
+
+}
+
+/*==========================================================
+    PDF VIEWER
+==========================================================*/
+
+#pdf-viewer{
+
+    position:relative;
+
+    flex:1;
+
+    overflow:auto;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-start;
+
+    padding:24px;
+
+    scroll-behavior:smooth;
+
+    background:#DCE3EC;
+
+}
+
+/*==========================================================
+    PDF CANVAS
+==========================================================*/
+
+.pdf-page{
+
+    position:relative;
+
+    display:block;
+
+    margin:0 auto 24px;
+
+    background:#FFFFFF;
+
+    border-radius:10px;
+
+    box-shadow:
+
+        0 8px 24px rgba(0,0,0,.15);
+
+    overflow:hidden;
+
+}
+
+.pdf-page canvas{
+
+    display:block;
+
+    width:100%;
+
+    height:auto;
+
+}
+
+/*==========================================================
+    PDF LOADING
+==========================================================*/
+
+.pdf-loading{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:18px;
+
+    min-height:400px;
+
+    color:var(--gray500);
+
+}
+
+.pdf-loading-spinner{
+
+    width:54px;
+
+    height:54px;
+
+    border-radius:50%;
+
+    border:5px solid rgba(11,94,215,.15);
+
+    border-top-color:var(--primary);
+
+    animation:pdfSpin .9s linear infinite;
+
+}
+
+/*==========================================================
+    THUMBNAIL PANEL
+==========================================================*/
+
+#thumbnail-panel{
+
+    width:220px;
+
+    overflow-y:auto;
+
+    background:var(--card);
+
+    border-right:1px solid var(--border);
+
+    padding:12px;
+
+}
+
+.thumbnail-item{
+
+    margin-bottom:14px;
+
+    padding:8px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+
+}
+
+.thumbnail-item:hover{
+
+    background:rgba(11,94,215,.08);
+
+    transform:translateY(-2px);
+
+}
+
+.thumbnail-item.active{
+
+    border:2px solid var(--primary);
+
+}
+
+.thumbnail-item canvas{
+
+    width:100%;
+
+    border-radius:6px;
+
+    display:block;
+
+}
+
+.thumbnail-number{
+
+    margin-top:8px;
+
+    text-align:center;
+
+    font-size:.8rem;
+
+    color:var(--gray500);
+
+}
+
+/*==========================================================
+    PAGE SHADOW
+==========================================================*/
+
+.pdf-page::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    box-shadow:inset 0 0 0 1px rgba(0,0,0,.04);
+
+}
+
+/*==========================================================
+    PDF ANIMATION
+==========================================================*/
+
+.pdf-page{
+
+    animation:pageFade .25s ease;
+
+}
+
+@keyframes pageFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+@keyframes pdfSpin{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/*==========================================================
+    GPS MARKER
+==========================================================*/
+
+.gps-marker{
+
+    position:absolute;
+
+    width:18px;
+
+    height:18px;
+
+    border-radius:50%;
+
+    background:#0D6EFD;
+
+    border:3px solid #FFFFFF;
+
+    box-shadow:
+        0 0 0 4px rgba(13,110,253,.25),
+        0 4px 12px rgba(0,0,0,.25);
+
+    transform:translate(-50%,-50%);
+
+    z-index:800;
+
+}
+
+/*==========================================================
+    GPS ACCURACY CIRCLE
+==========================================================*/
+
+.gps-accuracy{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    border:2px solid rgba(13,110,253,.35);
+
+    background:rgba(13,110,253,.12);
+
+    transform:translate(-50%,-50%);
+
+    pointer-events:none;
+
+    z-index:790;
+
+}
+
+/*==========================================================
+    GPS HEADING
+==========================================================*/
+
+.gps-heading{
+
+    position:absolute;
+
+    width:0;
+
+    height:0;
+
+    border-left:10px solid transparent;
+
+    border-right:10px solid transparent;
+
+    border-bottom:26px solid rgba(13,110,253,.45);
+
+    transform-origin:center bottom;
+
+    pointer-events:none;
+
+    z-index:785;
+
+}
+
+/*==========================================================
+    COMPASS
+==========================================================*/
+
+#compass-overlay{
+
+    position:absolute;
+
+    top:18px;
+
+    right:18px;
+
+    width:72px;
+
+    height:72px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.92);
+
+    border:1px solid var(--border);
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+    z-index:900;
+
+}
+
+#compass-overlay img{
+
+    width:52px;
+
+    height:52px;
+
+    transition:transform .15s linear;
+
+}
+
+/*==========================================================
+    SCALE BAR
+==========================================================*/
+
+#scale-bar{
+
+    position:absolute;
+
+    left:18px;
+
+    bottom:18px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:6px;
+
+    z-index:850;
+
+}
+
+.scale-line{
+
+    width:120px;
+
+    height:8px;
+
+    background:#FFFFFF;
+
+    border:2px solid #111111;
+
+}
+
+.scale-label{
+
+    font-size:.75rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+/*==========================================================
+    ZOOM INDICATOR
+==========================================================*/
+
+#zoom-indicator{
+
+    position:absolute;
+
+    top:18px;
+
+    left:18px;
+
+    min-width:84px;
+
+    height:36px;
+
+    padding:0 14px;
+
+    border-radius:20px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(255,255,255,.92);
+
+    border:1px solid var(--border);
+
+    font-weight:700;
+
+    color:var(--text);
+
+    box-shadow:0 6px 16px rgba(0,0,0,.12);
+
+    z-index:850;
+
+}
+
+/*==========================================================
+    COORDINATE OVERLAY
+==========================================================*/
+
+#coordinate-overlay{
+
+    position:absolute;
+
+    right:18px;
+
+    bottom:18px;
+
+    min-width:220px;
+
+    padding:12px 14px;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,.94);
+
+    border:1px solid var(--border);
+
+    font-size:.82rem;
+
+    line-height:1.6;
+
+    color:var(--text);
+
+    box-shadow:0 8px 20px rgba(0,0,0,.15);
+
+    z-index:850;
+
+}
+
+.coordinate-row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    gap:12px;
+
+}
+
+.coordinate-label{
+
+    font-weight:600;
+
+    color:var(--gray500);
+
+}
+
+.coordinate-value{
+
+    font-family:monospace;
+
+    font-weight:700;
+
+}
+
+/*==========================================================
+    MAP CROSSHAIR
+==========================================================*/
+
+#crosshair{
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    width:26px;
+
+    height:26px;
+
+    transform:translate(-50%,-50%);
+
+    pointer-events:none;
+
+    z-index:880;
+
+}
+
+#crosshair::before,
+#crosshair::after{
+
+    content:"";
+
+    position:absolute;
+
+    background:#DC3545;
+
+}
+
+#crosshair::before{
+
+    left:50%;
+
+    top:0;
+
+    width:2px;
+
+    height:100%;
+
+    transform:translateX(-50%);
+
+}
+
+#crosshair::after{
+
+    top:50%;
+
+    left:0;
+
+    width:100%;
+
+    height:2px;
+
+    transform:translateY(-50%);
+
+}
+
+/*==========================================================
+    AUTO CENTER INDICATOR
+==========================================================*/
+
+.follow-indicator{
+
+    position:absolute;
+
+    top:64px;
+
+    left:18px;
+
+    padding:8px 14px;
+
+    border-radius:20px;
+
+    background:#198754;
+
+    color:#FFFFFF;
+
+    font-size:.78rem;
+
+    font-weight:700;
+
+    box-shadow:0 6px 16px rgba(0,0,0,.18);
+
+    z-index:860;
+
+}
+
+.follow-indicator.hidden{
+
+    display:none;
+
+}
+
+/*==========================================================
+    WAYPOINT MARKER
+==========================================================*/
+
+.waypoint-marker{
+
+    position:absolute;
+
+    width:26px;
+
+    height:26px;
+
+    border-radius:50% 50% 50% 0;
+
+    background:#6F42C1;
+
+    transform:rotate(-45deg) translate(-50%,-50%);
+
+    transform-origin:center;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    z-index:820;
+
+    box-shadow:0 6px 14px rgba(0,0,0,.25);
+
+}
+
+.waypoint-marker i{
+
+    transform:rotate(45deg);
+
+    color:#FFFFFF;
+
+    font-size:14px;
+
+}
+
+/*==========================================================
+    WAYPOINT LABEL
+==========================================================*/
+
+.waypoint-label{
+
+    position:absolute;
+
+    transform:translate(-50%,10px);
+
+    background:rgba(0,0,0,.75);
+
+    color:#FFFFFF;
+
+    padding:4px 8px;
+
+    border-radius:8px;
+
+    font-size:.75rem;
+
+    white-space:nowrap;
+
+    z-index:821;
+
+}
+
+/*==========================================================
+    TRACK LAYER
+==========================================================*/
+
+.track-line{
+
+    position:absolute;
+
+    height:3px;
+
+    background:#FD7E14;
+
+    border-radius:3px;
+
+    transform-origin:left center;
+
+    z-index:600;
+
+    opacity:.9;
+
+}
+
+.track-point{
+
+    position:absolute;
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#FD7E14;
+
+    border:2px solid #FFFFFF;
+
+    transform:translate(-50%,-50%);
+
+    z-index:610;
+
+}
+
+/*==========================================================
+    TRACK START / END MARKER
+==========================================================*/
+
+.track-start,
+.track-end{
+
+    position:absolute;
+
+    width:14px;
+
+    height:14px;
+
+    border-radius:50%;
+
+    border:3px solid #FFFFFF;
+
+    transform:translate(-50%,-50%);
+
+    z-index:620;
+
+}
+
+.track-start{
+
+    background:#198754;
+
+}
+
+.track-end{
+
+    background:#DC3545;
+
+}
+
+/*==========================================================
+    MEASURE TOOL LINE
+==========================================================*/
+
+.measure-line{
+
+    position:absolute;
+
+    height:2px;
+
+    background:#20C997;
+
+    transform-origin:left center;
+
+    z-index:650;
+
+    opacity:.85;
+
+}
+
+/*==========================================================
+    MEASURE POINT
+==========================================================*/
+
+.measure-point{
+
+    position:absolute;
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:#20C997;
+
+    border:2px solid #FFFFFF;
+
+    transform:translate(-50%,-50%);
+
+    z-index:660;
+
+}
+
+/*==========================================================
+    MEASURE LABEL
+==========================================================*/
+
+.measure-label{
+
+    position:absolute;
+
+    padding:4px 8px;
+
+    background:#20C997;
+
+    color:#FFFFFF;
+
+    font-size:.75rem;
+
+    border-radius:6px;
+
+    transform:translate(-50%,-120%);
+
+    white-space:nowrap;
+
+    z-index:670;
+
+}
+
+/*==========================================================
+    POLYLINE (GENERAL)
+==========================================================*/
+
+.polyline{
+
+    position:absolute;
+
+    height:2px;
+
+    background:#0DCAF0;
+
+    transform-origin:left center;
+
+    z-index:580;
+
+}
+
+/*==========================================================
+    POLYGON FILL
+==========================================================*/
+
+.polygon-fill{
+
+    position:absolute;
+
+    background:rgba(13,202,240,.25);
+
+    border:1px solid rgba(13,202,240,.6);
+
+    z-index:570;
+
+}
+
+/*==========================================================
+    LABEL MARKER
+==========================================================*/
+
+.map-label{
+
+    position:absolute;
+
+    padding:4px 10px;
+
+    border-radius:10px;
+
+    background:rgba(255,255,255,.95);
+
+    border:1px solid var(--border);
+
+    font-size:.75rem;
+
+    font-weight:600;
+
+    color:var(--text);
+
+    box-shadow:0 6px 14px rgba(0,0,0,.12);
+
+    transform:translate(-50%,-50%);
+
+    z-index:830;
+
+    white-space:nowrap;
+
+}
+
+/*==========================================================
+    SELECTION BOX
+==========================================================*/
+
+.selection-box{
+
+    position:absolute;
+
+    border:2px dashed #0D6EFD;
+
+    background:rgba(13,110,253,.08);
+
+    z-index:900;
+
+}
+
+/*==========================================================
+    TOOLTIP MEASURE
+==========================================================*/
+
+.measure-tooltip{
+
+    position:absolute;
+
+    padding:6px 10px;
+
+    border-radius:8px;
+
+    background:#111111;
+
+    color:#FFFFFF;
+
+    font-size:.75rem;
+
+    transform:translate(-50%,-120%);
+
+    white-space:nowrap;
+
+    z-index:910;
+
+}
+
+/*==========================================================
+    ANIMATION
+==========================================================*/
+
+@keyframes markerPop{
+
+    from{
+
+        transform:scale(.6);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+.waypoint-marker,
+.track-point,
+.measure-point{
+
+    animation:markerPop .2s ease;
+
+}
+
+/*==========================================================
+    DARK MODE (MAP LAYER)
+==========================================================*/
+
+body.dark-theme #map-container{
+
+    background:#0F172A;
+
+}
+
+body.dark-theme #pdf-viewer{
+
+    background:#111827;
+
+}
+
+body.dark-theme .pdf-page{
+
+    background:#1E1E1E;
+
+    box-shadow:0 10px 26px rgba(0,0,0,.5);
+
+}
+
+body.dark-theme #thumbnail-panel{
+
+    background:#1E1E1E;
+
+    border-color:#333333;
+
+}
+
+body.dark-theme .thumbnail-item:hover{
+
+    background:rgba(255,255,255,.06);
+
+}
+
+body.dark-theme #zoom-indicator,
+body.dark-theme #coordinate-overlay,
+body.dark-theme #compass-overlay{
+
+    background:rgba(30,30,30,.92);
+
+    border-color:#3A3A3A;
+
+    color:#FFFFFF;
+
+}
+
+body.dark-theme .map-label{
+
+    background:rgba(30,30,30,.92);
+
+    border-color:#444444;
+
+    color:#FFFFFF;
+
+}
+
+/*==========================================================
+    OFFLINE / DISCONNECTED STATE
+==========================================================*/
+
+.map-offline{
+
+    filter:grayscale(1);
+
+    opacity:.85;
+
+}
+
+.map-offline::after{
+
+    content:"OFFLINE MODE";
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    background:rgba(0,0,0,.75);
+
+    color:#FFFFFF;
+
+    font-weight:700;
+
+    z-index:9999;
+
+}
+
+/*==========================================================
+    PERFORMANCE MODE (LOW GRAPHICS)
+==========================================================*/
+
+.map-low-performance *{
+
+    animation:none !important;
+
+    transition:none !important;
+
+    box-shadow:none !important;
+
+}
+
+/*==========================================================
+    GLASS EFFECT OVERLAY
+==========================================================*/
+
+.glass-overlay{
+
+    background:rgba(255,255,255,.25);
+
+    backdrop-filter:blur(8px);
+
+    border:1px solid rgba(255,255,255,.3);
+
+}
+
+body.dark-theme .glass-overlay{
+
+    background:rgba(0,0,0,.35);
+
+    border-color:rgba(255,255,255,.1);
+
+}
+
+/*==========================================================
+    MINI NAVIGATION PANEL
+==========================================================*/
+
+.mini-nav{
+
+    position:absolute;
+
+    top:50%;
+
+    right:18px;
+
+    transform:translateY(-50%);
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    z-index:920;
+
+}
+
+.mini-nav button{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:10px;
+
+    border:none;
+
+    background:var(--card);
+
+    color:var(--text);
+
+    box-shadow:0 6px 14px rgba(0,0,0,.12);
+
+    cursor:pointer;
+
+    transition:transform .2s ease;
+
+}
+
+.mini-nav button:hover{
+
+    transform:scale(1.08);
+
+}
+
+/*==========================================================
+    MOBILE OPTIMIZATION
+==========================================================*/
+
+@media (max-width:768px){
+
+    #thumbnail-panel{
+
+        display:none;
+
+    }
+
+    #compass-overlay{
+
+        width:60px;
+
+        height:60px;
+
+    }
+
+    #zoom-indicator{
+
+        top:12px;
+
+        left:12px;
+
+        font-size:.8rem;
+
+    }
+
+    #coordinate-overlay{
+
+        display:none;
+
+    }
+
+    .waypoint-marker{
+
+        width:22px;
+
+        height:22px;
+
+    }
+
+    .track-line,
+    .polyline{
+
+        height:2px;
+
+    }
+
+}
+
+/*==========================================================
+    TOUCH MODE OPTIMIZATION
+==========================================================*/
+
+.touch-mode .pdf-page{
+
+    margin-bottom:32px;
+
+}
+
+.touch-mode .btn{
+
+    min-height:48px;
+
+}
+
+.touch-mode .btn-icon{
+
+    width:52px;
+
+    height:52px;
+
+}
+
+/*==========================================================
+    HIDE ELEMENTS (UTILITY)
+==========================================================*/
+
+.hidden{
+
+    display:none !important;
+
+}
+
+.invisible{
+
+    visibility:hidden !important;
+
+}
+
+/*==========================================================
+    LOCKED MAP STATE
+==========================================================*/
+
+.map-locked{
+
+    pointer-events:none;
+
+    filter:blur(.2px);
+
+}
+
+.map-locked::after{
+
+    content:"MAP LOCKED";
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    padding:14px 20px;
+
+    background:rgba(220,53,69,.85);
+
+    color:#FFFFFF;
+
+    font-weight:800;
+
+    border-radius:12px;
+
+    z-index:9999;
+
+}
+
+/*==========================================================
+    ANIMATIONS CLEANUP MODE
+==========================================================*/
+
+.reduce-motion *{
+
+    animation:none !important;
+
+    transition:none !important;
+
+}
+
+/*==========================================================
+    MAP FADE IN
+==========================================================*/
+
+#map-container{
+
+    animation:mapFadeIn .3s ease;
+
+}
+
+@keyframes mapFadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+/*==========================================================
+    END OF FILE
+==========================================================*/

@@ -1,0 +1,990 @@
+/*==========================================================
+    GUSERA Maps
+    button.css
+==========================================================*/
+
+/*==========================================================
+    BASE BUTTON
+==========================================================*/
+
+.btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    min-height:44px;
+
+    padding:0 18px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    user-select:none;
+
+    font-size:.95rem;
+
+    font-weight:600;
+
+    line-height:1;
+
+    text-decoration:none;
+
+    white-space:nowrap;
+
+    transition:
+        background .2s ease,
+        color .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease,
+        transform .15s ease;
+
+}
+
+.btn:hover{
+
+    transform:translateY(-1px);
+
+}
+
+.btn:active{
+
+    transform:scale(.98);
+
+}
+
+/*==========================================================
+    BUTTON SIZE
+==========================================================*/
+
+.btn-sm{
+
+    min-height:34px;
+
+    padding:0 12px;
+
+    font-size:.82rem;
+
+}
+
+.btn-md{
+
+    min-height:44px;
+
+}
+
+.btn-lg{
+
+    min-height:52px;
+
+    padding:0 24px;
+
+    font-size:1rem;
+
+}
+
+.btn-xl{
+
+    min-height:60px;
+
+    padding:0 30px;
+
+    font-size:1.05rem;
+
+}
+
+/*==========================================================
+    PRIMARY
+==========================================================*/
+
+.btn-primary{
+
+    background:var(--primary);
+
+    color:#FFFFFF;
+
+}
+
+.btn-primary:hover{
+
+    background:var(--primary-dark);
+
+}
+
+/*==========================================================
+    SECONDARY
+==========================================================*/
+
+.btn-secondary{
+
+    background:#6C757D;
+
+    color:#FFFFFF;
+
+}
+
+.btn-secondary:hover{
+
+    background:#5C636A;
+
+}
+
+/*==========================================================
+    SUCCESS
+==========================================================*/
+
+.btn-success{
+
+    background:#198754;
+
+    color:#FFFFFF;
+
+}
+
+.btn-success:hover{
+
+    background:#157347;
+
+}
+
+/*==========================================================
+    WARNING
+==========================================================*/
+
+.btn-warning{
+
+    background:#FFC107;
+
+    color:#111111;
+
+}
+
+.btn-warning:hover{
+
+    background:#FFCA2C;
+
+}
+
+/*==========================================================
+    DANGER
+==========================================================*/
+
+.btn-danger{
+
+    background:#DC3545;
+
+    color:#FFFFFF;
+
+}
+
+.btn-danger:hover{
+
+    background:#BB2D3B;
+
+}
+
+/*==========================================================
+    INFO
+==========================================================*/
+
+.btn-info{
+
+    background:#0DCAF0;
+
+    color:#111111;
+
+}
+
+.btn-info:hover{
+
+    background:#31D2F2;
+
+}
+
+/*==========================================================
+    LIGHT
+==========================================================*/
+
+.btn-light{
+
+    background:#F8F9FA;
+
+    color:#212529;
+
+    border:1px solid var(--border);
+
+}
+
+.btn-light:hover{
+
+    background:#E9ECEF;
+
+}
+
+/*==========================================================
+    DARK
+==========================================================*/
+
+.btn-dark{
+
+    background:#212529;
+
+    color:#FFFFFF;
+
+}
+
+.btn-dark:hover{
+
+    background:#343A40;
+
+}
+
+/*==========================================================
+    FULL WIDTH
+==========================================================*/
+
+.btn-block{
+
+    width:100%;
+
+}
+
+/*==========================================================
+    ICON
+==========================================================*/
+
+.btn i{
+
+    font-size:1rem;
+
+}
+
+.btn svg{
+
+    width:18px;
+
+    height:18px;
+
+}
+
+/*==========================================================
+    OUTLINE BUTTON
+==========================================================*/
+
+.btn-outline{
+
+    background:transparent;
+
+    border:1px solid var(--border);
+
+    color:var(--text);
+
+}
+
+.btn-outline:hover{
+
+    border-color:var(--primary);
+
+    color:var(--primary);
+
+    background:rgba(11,94,215,.08);
+
+}
+
+/*==========================================================
+    GHOST BUTTON
+==========================================================*/
+
+.btn-ghost{
+
+    background:transparent;
+
+    color:var(--text);
+
+}
+
+.btn-ghost:hover{
+
+    background:rgba(0,0,0,.06);
+
+}
+
+body.dark-theme .btn-ghost:hover{
+
+    background:rgba(255,255,255,.08);
+
+}
+
+/*==========================================================
+    ICON BUTTON
+==========================================================*/
+
+.btn-icon{
+
+    width:44px;
+
+    height:44px;
+
+    padding:0;
+
+    border-radius:50%;
+
+}
+
+.btn-icon.btn-lg{
+
+    width:52px;
+
+    height:52px;
+
+}
+
+.btn-icon.btn-sm{
+
+    width:36px;
+
+    height:36px;
+
+}
+
+/*==========================================================
+    BUTTON GROUP
+==========================================================*/
+
+.btn-group{
+
+    display:inline-flex;
+
+    gap:8px;
+
+    flex-wrap:wrap;
+
+}
+
+/*==========================================================
+    GPS BUTTON
+==========================================================*/
+
+.btn-gps{
+
+    background:#198754;
+
+    color:#FFFFFF;
+
+}
+
+.btn-gps:hover{
+
+    background:#157347;
+
+}
+
+.btn-gps.active{
+
+    animation:gpsBlink 2s infinite;
+
+}
+
+/*==========================================================
+    FOLLOW GPS
+==========================================================*/
+
+.btn-follow{
+
+    background:#0D6EFD;
+
+    color:#FFFFFF;
+
+}
+
+.btn-follow.active{
+
+    box-shadow:
+
+        0 0 0 4px rgba(13,110,253,.20);
+
+}
+
+/*==========================================================
+    TRACK RECORDER
+==========================================================*/
+
+.btn-track{
+
+    background:#FD7E14;
+
+    color:#FFFFFF;
+
+}
+
+.btn-track.recording{
+
+    animation:recordPulse 1s infinite;
+
+}
+
+/*==========================================================
+    WAYPOINT
+==========================================================*/
+
+.btn-waypoint{
+
+    background:#6F42C1;
+
+    color:#FFFFFF;
+
+}
+
+/*==========================================================
+    MEASURE
+==========================================================*/
+
+.btn-measure{
+
+    background:#20C997;
+
+    color:#FFFFFF;
+
+}
+
+/*==========================================================
+    IMPORT
+==========================================================*/
+
+.btn-import{
+
+    background:#6610F2;
+
+    color:#FFFFFF;
+
+}
+
+/*==========================================================
+    EXPORT
+==========================================================*/
+
+.btn-export{
+
+    background:#0DCAF0;
+
+    color:#111111;
+
+}
+
+/*==========================================================
+    PDF BUTTON
+==========================================================*/
+
+.btn-pdf{
+
+    background:#DC3545;
+
+    color:#FFFFFF;
+
+}
+
+/*==========================================================
+    SETTINGS
+==========================================================*/
+
+.btn-settings{
+
+    background:#6C757D;
+
+    color:#FFFFFF;
+
+}
+
+/*==========================================================
+    LOADING BUTTON
+==========================================================*/
+
+.btn-loading{
+
+    pointer-events:none;
+
+    opacity:.75;
+
+}
+
+.btn-loading::before{
+
+    content:"";
+
+    width:16px;
+
+    height:16px;
+
+    border-radius:50%;
+
+    border:2px solid rgba(255,255,255,.35);
+
+    border-top-color:#FFFFFF;
+
+    animation:btnSpinner .8s linear infinite;
+
+}
+
+/*==========================================================
+    BADGE BUTTON
+==========================================================*/
+
+.btn-badge{
+
+    position:relative;
+
+}
+
+.btn-badge::after{
+
+    content:attr(data-badge);
+
+    position:absolute;
+
+    top:-6px;
+
+    right:-6px;
+
+    min-width:18px;
+
+    height:18px;
+
+    padding:0 5px;
+
+    border-radius:20px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#DC3545;
+
+    color:#FFFFFF;
+
+    font-size:.65rem;
+
+    font-weight:700;
+
+}
+
+/*==========================================================
+    ANIMATION
+==========================================================*/
+
+@keyframes btnSpinner{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+@keyframes recordPulse{
+
+    0%{
+
+        box-shadow:0 0 0 0 rgba(220,53,69,.50);
+
+    }
+
+    70%{
+
+        box-shadow:0 0 0 12px rgba(220,53,69,0);
+
+    }
+
+    100%{
+
+        box-shadow:0 0 0 0 rgba(220,53,69,0);
+
+    }
+
+}
+
+@keyframes gpsBlink{
+
+    0%,100%{
+
+        opacity:1;
+
+    }
+
+    50%{
+
+        opacity:.55;
+
+    }
+
+}
+
+/*==========================================================
+    FLOATING ACTION BUTTON
+==========================================================*/
+
+.btn-fab{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:0;
+
+    background:var(--primary);
+
+    color:#FFFFFF;
+
+    font-size:1.5rem;
+
+    box-shadow:
+        0 10px 28px rgba(11,94,215,.35);
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        background .2s ease;
+
+}
+
+.btn-fab:hover{
+
+    transform:translateY(-3px) scale(1.05);
+
+    box-shadow:
+        0 16px 36px rgba(11,94,215,.45);
+
+}
+
+.btn-fab:active{
+
+    transform:scale(.95);
+
+}
+
+/*==========================================================
+    MINI FAB
+==========================================================*/
+
+.btn-fab-sm{
+
+    width:46px;
+
+    height:46px;
+
+    font-size:1.1rem;
+
+}
+
+/*==========================================================
+    SPLIT BUTTON
+==========================================================*/
+
+.btn-split{
+
+    display:inline-flex;
+
+    overflow:hidden;
+
+    border-radius:12px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.btn-split .btn{
+
+    border-radius:0;
+
+}
+
+.btn-split .btn:first-child{
+
+    border-top-left-radius:12px;
+
+    border-bottom-left-radius:12px;
+
+}
+
+.btn-split .btn:last-child{
+
+    border-top-right-radius:12px;
+
+    border-bottom-right-radius:12px;
+
+    border-left:1px solid rgba(255,255,255,.15);
+
+    min-width:46px;
+
+    padding:0;
+
+}
+
+/*==========================================================
+    DROPDOWN BUTTON
+==========================================================*/
+
+.btn-dropdown{
+
+    position:relative;
+
+}
+
+.btn-dropdown::after{
+
+    content:"▼";
+
+    margin-left:8px;
+
+    font-size:.65rem;
+
+}
+
+/*==========================================================
+    DISABLED
+==========================================================*/
+
+.btn:disabled,
+
+.btn.disabled{
+
+    opacity:.55;
+
+    cursor:not-allowed;
+
+    pointer-events:none;
+
+    transform:none;
+
+    box-shadow:none;
+
+}
+
+/*==========================================================
+    BUTTON ELEVATION
+==========================================================*/
+
+.btn-raised{
+
+    box-shadow:
+
+        0 6px 18px rgba(0,0,0,.18);
+
+}
+
+.btn-raised:hover{
+
+    box-shadow:
+
+        0 10px 26px rgba(0,0,0,.24);
+
+}
+
+/*==========================================================
+    BUTTON TEXT
+==========================================================*/
+
+.btn-text{
+
+    background:transparent;
+
+    color:var(--primary);
+
+    padding:0 10px;
+
+}
+
+.btn-text:hover{
+
+    background:rgba(11,94,215,.08);
+
+}
+
+/*==========================================================
+    RIPPLE PLACEHOLDER
+==========================================================*/
+
+.btn-ripple{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.btn-ripple span.ripple{
+
+    position:absolute;
+
+    border-radius:50%;
+
+    transform:scale(0);
+
+    background:rgba(255,255,255,.35);
+
+    pointer-events:none;
+
+    animation:buttonRipple .6s linear;
+
+}
+
+@keyframes buttonRipple{
+
+    to{
+
+        transform:scale(4);
+
+        opacity:0;
+
+    }
+
+}
+
+/*==========================================================
+    DARK MODE
+==========================================================*/
+
+body.dark-theme .btn-outline{
+
+    border-color:#3A3A3A;
+
+}
+
+body.dark-theme .btn-outline:hover{
+
+    background:rgba(255,255,255,.08);
+
+}
+
+body.dark-theme .btn-light{
+
+    background:#2B2B2B;
+
+    color:#FFFFFF;
+
+    border-color:#3A3A3A;
+
+}
+
+body.dark-theme .btn-light:hover{
+
+    background:#383838;
+
+}
+
+body.dark-theme .btn-text{
+
+    color:#66B2FF;
+
+}
+
+/*==========================================================
+    RESPONSIVE
+==========================================================*/
+
+@media (max-width:768px){
+
+    .btn{
+
+        min-height:42px;
+
+        padding:0 16px;
+
+        font-size:.9rem;
+
+    }
+
+    .btn-lg{
+
+        min-height:48px;
+
+    }
+
+    .btn-xl{
+
+        min-height:54px;
+
+    }
+
+    .btn-fab{
+
+        width:56px;
+
+        height:56px;
+
+    }
+
+}
+
+@media (max-width:480px){
+
+    .btn{
+
+        width:100%;
+
+    }
+
+    .btn-group{
+
+        width:100%;
+
+        flex-direction:column;
+
+    }
+
+    .btn-group .btn{
+
+        width:100%;
+
+    }
+
+}
+
+/*==========================================================
+    ACCESSIBILITY
+==========================================================*/
+
+.btn:focus-visible{
+
+    outline:3px solid rgba(11,94,215,.30);
+
+    outline-offset:2px;
+
+}
+
+/*==========================================================
+    TRANSITION HELPER
+==========================================================*/
+
+.btn-transition{
+
+    transition:all .25s ease;
+
+}
+
+/*==========================================================
+    END OF FILE
+==========================================================*/

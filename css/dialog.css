@@ -1,0 +1,1413 @@
+/*==========================================================
+    GUSERA Maps
+    dialog.css
+==========================================================*/
+
+/*==========================================================
+    OVERLAY
+==========================================================*/
+
+.dialog-overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.45);
+
+    backdrop-filter:blur(4px);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:
+        opacity .25s ease,
+        visibility .25s ease;
+
+    z-index:2000;
+
+}
+
+.dialog-overlay.show{
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+/*==========================================================
+    DIALOG
+==========================================================*/
+
+.dialog{
+
+    width:min(92vw,620px);
+
+    max-height:90vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+    border-radius:18px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    box-shadow:
+
+        0 18px 45px rgba(0,0,0,.22);
+
+    transform:scale(.92);
+
+    opacity:0;
+
+    transition:
+
+        transform .25s ease,
+
+        opacity .25s ease;
+
+}
+
+.dialog-overlay.show .dialog{
+
+    transform:scale(1);
+
+    opacity:1;
+
+}
+
+/*==========================================================
+    DIALOG HEADER
+==========================================================*/
+
+.dialog-header{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:18px 22px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.dialog-title{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.dialog-title i{
+
+    font-size:22px;
+
+    color:var(--primary);
+
+}
+
+.dialog-title h2{
+
+    font-size:1.15rem;
+
+    font-weight:700;
+
+    color:var(--text);
+
+}
+
+/*==========================================================
+    CLOSE BUTTON
+==========================================================*/
+
+.dialog-close{
+
+    width:40px;
+
+    height:40px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:50%;
+
+    transition:all .25s ease;
+
+}
+
+.dialog-close:hover{
+
+    background:rgba(0,0,0,.08);
+
+}
+
+body.dark-theme .dialog-close:hover{
+
+    background:rgba(255,255,255,.08);
+
+}
+
+/*==========================================================
+    BODY
+==========================================================*/
+
+.dialog-body{
+
+    flex:1;
+
+    overflow:auto;
+
+    padding:22px;
+
+}
+
+/*==========================================================
+    FOOTER
+==========================================================*/
+
+.dialog-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:12px;
+
+    padding:18px 22px;
+
+    border-top:1px solid var(--border);
+
+}
+
+/*==========================================================
+    BUTTONS
+==========================================================*/
+
+.dialog-footer button{
+
+    min-width:110px;
+
+}
+
+/*==========================================================
+    SCROLLBAR
+==========================================================*/
+
+.dialog-body::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+.dialog-body::-webkit-scrollbar-thumb{
+
+    background:#BFC4CB;
+
+    border-radius:20px;
+
+}
+
+/*==========================================================
+    ANIMATION
+==========================================================*/
+
+@keyframes dialogOpen{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(20px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.dialog{
+
+    animation:dialogOpen .25s ease;
+
+}
+
+/*==========================================================
+    FORM LAYOUT
+==========================================================*/
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    margin-bottom:18px;
+
+}
+
+.form-row{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:16px;
+
+}
+
+/*==========================================================
+    LABEL
+==========================================================*/
+
+.form-group label{
+
+    margin-bottom:8px;
+
+    font-size:.9rem;
+
+    font-weight:600;
+
+    color:var(--text);
+
+}
+
+/*==========================================================
+    INPUT
+==========================================================*/
+
+.dialog-input,
+.dialog-select,
+.dialog-textarea{
+
+    width:100%;
+
+    padding:12px 14px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:var(--card);
+
+    color:var(--text);
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+
+}
+
+.dialog-input:focus,
+.dialog-select:focus,
+.dialog-textarea:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 3px rgba(11,94,215,.15);
+
+}
+
+.dialog-textarea{
+
+    min-height:110px;
+
+    resize:vertical;
+
+}
+
+/*==========================================================
+    FILE PICKER
+==========================================================*/
+
+.file-picker{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+.file-picker input[type=file]{
+
+    display:none;
+
+}
+
+.file-picker label{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:10px 16px;
+
+    border-radius:10px;
+
+    background:var(--primary);
+
+    color:#FFFFFF;
+
+    cursor:pointer;
+
+    transition:background .2s ease;
+
+}
+
+.file-picker label:hover{
+
+    background:var(--primary-dark);
+
+}
+
+.file-name{
+
+    color:var(--gray500);
+
+    font-size:.85rem;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+    white-space:nowrap;
+
+}
+
+/*==========================================================
+    COLOR PICKER
+==========================================================*/
+
+.color-picker{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.color-picker input[type=color]{
+
+    width:48px;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:none;
+
+    cursor:pointer;
+
+}
+
+/*==========================================================
+    CHECKBOX
+==========================================================*/
+
+.checkbox-group{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.checkbox-group input[type=checkbox]{
+
+    width:18px;
+
+    height:18px;
+
+    accent-color:var(--primary);
+
+}
+
+/*==========================================================
+    RADIO BUTTON
+==========================================================*/
+
+.radio-group{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:14px;
+
+}
+
+.radio-group label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    cursor:pointer;
+
+}
+
+.radio-group input[type=radio]{
+
+    accent-color:var(--primary);
+
+}
+
+/*==========================================================
+    TOGGLE SWITCH
+==========================================================*/
+
+.switch{
+
+    position:relative;
+
+    display:inline-block;
+
+    width:54px;
+
+    height:30px;
+
+}
+
+.switch input{
+
+    display:none;
+
+}
+
+.switch-slider{
+
+    position:absolute;
+
+    inset:0;
+
+    border-radius:30px;
+
+    background:#BDBDBD;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.switch-slider::before{
+
+    content:"";
+
+    position:absolute;
+
+    left:4px;
+
+    bottom:4px;
+
+    width:22px;
+
+    height:22px;
+
+    border-radius:50%;
+
+    background:#FFFFFF;
+
+    transition:.25s;
+
+}
+
+.switch input:checked + .switch-slider{
+
+    background:var(--primary);
+
+}
+
+.switch input:checked + .switch-slider::before{
+
+    transform:translateX(24px);
+
+}
+
+/*==========================================================
+    WAYPOINT COLOR LIST
+==========================================================*/
+
+.marker-color-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(6,1fr);
+
+    gap:10px;
+
+}
+
+.marker-color{
+
+    width:34px;
+
+    height:34px;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    border:2px solid transparent;
+
+    transition:transform .2s ease,
+               border-color .2s ease;
+
+}
+
+.marker-color:hover{
+
+    transform:scale(1.1);
+
+}
+
+.marker-color.active{
+
+    border-color:#FFFFFF;
+
+    box-shadow:0 0 0 2px var(--primary);
+
+}
+
+/*==========================================================
+    FORM HELP TEXT
+==========================================================*/
+
+.form-help{
+
+    margin-top:6px;
+
+    font-size:.8rem;
+
+    color:var(--gray500);
+
+}
+
+/*==========================================================
+    PDF LIST DIALOG
+==========================================================*/
+
+.pdf-list{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+
+    gap:18px;
+
+}
+
+.pdf-card{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        border-color .2s ease;
+
+}
+
+.pdf-card:hover{
+
+    transform:translateY(-4px);
+
+    border-color:var(--primary);
+
+    box-shadow:0 10px 24px rgba(0,0,0,.12);
+
+}
+
+.pdf-preview{
+
+    height:180px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#ECEFF3;
+
+}
+
+.pdf-preview img,
+.pdf-preview canvas{
+
+    max-width:100%;
+
+    max-height:100%;
+
+}
+
+.pdf-info{
+
+    padding:14px;
+
+}
+
+.pdf-info h3{
+
+    font-size:.95rem;
+
+    margin-bottom:6px;
+
+    color:var(--text);
+
+}
+
+.pdf-info p{
+
+    font-size:.8rem;
+
+    color:var(--gray500);
+
+}
+
+/*==========================================================
+    WAYPOINT DIALOG
+==========================================================*/
+
+.waypoint-preview{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    margin-bottom:20px;
+
+    padding:16px;
+
+    border-radius:12px;
+
+    background:rgba(11,94,215,.05);
+
+}
+
+.marker-preview{
+
+    width:48px;
+
+    height:48px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:var(--primary);
+
+    color:#FFFFFF;
+
+    font-size:22px;
+
+}
+
+.waypoint-info{
+
+    flex:1;
+
+}
+
+/*==========================================================
+    SETTINGS GROUP
+==========================================================*/
+
+.settings-group{
+
+    margin-bottom:28px;
+
+}
+
+.settings-group h3{
+
+    margin-bottom:12px;
+
+    font-size:1rem;
+
+    color:var(--primary);
+
+}
+
+.settings-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:14px 0;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.settings-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.settings-label{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:3px;
+
+}
+
+.settings-label span{
+
+    font-size:.8rem;
+
+    color:var(--gray500);
+
+}
+
+/*==========================================================
+    CONFIRM DIALOG
+==========================================================*/
+
+.confirm-dialog{
+
+    text-align:center;
+
+    padding:10px;
+
+}
+
+.confirm-icon{
+
+    width:72px;
+
+    height:72px;
+
+    margin:0 auto 18px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:34px;
+
+    color:#FFFFFF;
+
+    background:#DC3545;
+
+}
+
+.confirm-title{
+
+    font-size:1.2rem;
+
+    font-weight:700;
+
+    margin-bottom:10px;
+
+}
+
+.confirm-message{
+
+    color:var(--gray500);
+
+    line-height:1.6;
+
+}
+
+/*==========================================================
+    PROGRESS DIALOG
+==========================================================*/
+
+.progress-dialog{
+
+    text-align:center;
+
+}
+
+.progress-circle{
+
+    width:72px;
+
+    height:72px;
+
+    margin:0 auto 18px;
+
+    border-radius:50%;
+
+    border:6px solid rgba(11,94,215,.15);
+
+    border-top-color:var(--primary);
+
+    animation:dialogSpinner 1s linear infinite;
+
+}
+
+.progress-text{
+
+    font-size:.95rem;
+
+    color:var(--gray500);
+
+}
+
+/*==========================================================
+    LOADING DIALOG
+==========================================================*/
+
+.loading-dialog{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:18px;
+
+    min-height:220px;
+
+}
+
+.loading-spinner{
+
+    width:60px;
+
+    height:60px;
+
+    border-radius:50%;
+
+    border:6px solid rgba(11,94,215,.15);
+
+    border-top:6px solid var(--primary);
+
+    animation:dialogSpinner 1s linear infinite;
+
+}
+
+.loading-message{
+
+    font-weight:600;
+
+    color:var(--text);
+
+}
+
+/*==========================================================
+    ANIMATION
+==========================================================*/
+
+@keyframes dialogSpinner{
+
+    from{
+
+        transform:rotate(0deg);
+
+    }
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+/*==========================================================
+    SNACKBAR
+==========================================================*/
+
+.snackbar{
+
+    position:fixed;
+
+    left:50%;
+
+    bottom:28px;
+
+    transform:translateX(-50%) translateY(120px);
+
+    min-width:280px;
+
+    max-width:90vw;
+
+    padding:14px 18px;
+
+    border-radius:12px;
+
+    background:#323232;
+
+    color:#FFFFFF;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    box-shadow:0 10px 28px rgba(0,0,0,.25);
+
+    opacity:0;
+
+    visibility:hidden;
+
+    transition:
+        transform .3s ease,
+        opacity .3s ease,
+        visibility .3s ease;
+
+    z-index:3000;
+
+}
+
+.snackbar.show{
+
+    transform:translateX(-50%) translateY(0);
+
+    opacity:1;
+
+    visibility:visible;
+
+}
+
+.snackbar.success{
+
+    background:#198754;
+
+}
+
+.snackbar.warning{
+
+    background:#FFC107;
+
+    color:#111111;
+
+}
+
+.snackbar.error{
+
+    background:#DC3545;
+
+}
+
+/*==========================================================
+    TOAST
+==========================================================*/
+
+.toast-container{
+
+    position:fixed;
+
+    top:20px;
+
+    right:20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+    z-index:3100;
+
+}
+
+.toast{
+
+    min-width:260px;
+
+    max-width:340px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:14px 16px;
+
+    border-radius:12px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    box-shadow:0 12px 28px rgba(0,0,0,.15);
+
+    animation:toastIn .25s ease;
+
+}
+
+.toast-icon{
+
+    font-size:1.3rem;
+
+    color:var(--primary);
+
+}
+
+.toast-content{
+
+    flex:1;
+
+}
+
+.toast-title{
+
+    font-weight:700;
+
+    margin-bottom:2px;
+
+}
+
+.toast-message{
+
+    font-size:.85rem;
+
+    color:var(--gray500);
+
+}
+
+.toast-close{
+
+    cursor:pointer;
+
+    opacity:.6;
+
+    transition:opacity .2s ease;
+
+}
+
+.toast-close:hover{
+
+    opacity:1;
+
+}
+
+/*==========================================================
+    BOTTOM SHEET
+==========================================================*/
+
+.bottom-sheet{
+
+    position:fixed;
+
+    left:0;
+
+    right:0;
+
+    bottom:-100%;
+
+    max-height:85vh;
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:var(--card);
+
+    border-radius:22px 22px 0 0;
+
+    box-shadow:0 -10px 35px rgba(0,0,0,.20);
+
+    transition:bottom .3s ease;
+
+    z-index:2500;
+
+}
+
+.bottom-sheet.show{
+
+    bottom:0;
+
+}
+
+.bottom-sheet-handle{
+
+    width:48px;
+
+    height:5px;
+
+    margin:12px auto;
+
+    border-radius:20px;
+
+    background:#C6CBD3;
+
+}
+
+.bottom-sheet-header{
+
+    padding:0 20px 16px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.bottom-sheet-body{
+
+    flex:1;
+
+    overflow:auto;
+
+    padding:20px;
+
+}
+
+/*==========================================================
+    DARK MODE
+==========================================================*/
+
+body.dark-theme .dialog{
+
+    background:#1E1E1E;
+
+    border-color:#333333;
+
+}
+
+body.dark-theme .dialog-header{
+
+    border-bottom-color:#333333;
+
+}
+
+body.dark-theme .dialog-footer{
+
+    border-top-color:#333333;
+
+}
+
+body.dark-theme .dialog-input,
+body.dark-theme .dialog-select,
+body.dark-theme .dialog-textarea{
+
+    background:#2B2B2B;
+
+    border-color:#444444;
+
+    color:#FFFFFF;
+
+}
+
+body.dark-theme .pdf-preview{
+
+    background:#2A2A2A;
+
+}
+
+body.dark-theme .waypoint-preview{
+
+    background:rgba(255,255,255,.05);
+
+}
+
+body.dark-theme .bottom-sheet{
+
+    background:#1E1E1E;
+
+}
+
+body.dark-theme .toast{
+
+    background:#2A2A2A;
+
+    border-color:#3A3A3A;
+
+}
+
+body.dark-theme .snackbar{
+
+    background:#222222;
+
+}
+
+/*==========================================================
+    RESPONSIVE
+==========================================================*/
+
+@media (max-width:768px){
+
+    .dialog{
+
+        width:96vw;
+
+        max-height:94vh;
+
+        border-radius:16px;
+
+    }
+
+    .dialog-header{
+
+        padding:16px;
+
+    }
+
+    .dialog-body{
+
+        padding:16px;
+
+    }
+
+    .dialog-footer{
+
+        padding:16px;
+
+        flex-direction:column-reverse;
+
+    }
+
+    .dialog-footer button{
+
+        width:100%;
+
+    }
+
+    .form-row{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .pdf-list{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media (max-width:480px){
+
+    .toast-container{
+
+        left:12px;
+
+        right:12px;
+
+        top:12px;
+
+    }
+
+    .toast{
+
+        max-width:100%;
+
+        min-width:unset;
+
+    }
+
+    .snackbar{
+
+        min-width:unset;
+
+        width:calc(100vw - 24px);
+
+    }
+
+}
+
+/*==========================================================
+    ACCESSIBILITY
+==========================================================*/
+
+.dialog button:focus-visible,
+.dialog input:focus-visible,
+.dialog textarea:focus-visible,
+.dialog select:focus-visible{
+
+    outline:3px solid rgba(11,94,215,.30);
+
+    outline-offset:2px;
+
+}
+
+/*==========================================================
+    ANIMATIONS
+==========================================================*/
+
+@keyframes toastIn{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+/*==========================================================
+    END OF FILE
+==========================================================*/
